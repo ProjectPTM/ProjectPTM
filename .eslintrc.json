@@ -22,6 +22,8 @@
         "no-multi-spaces": "error",
         "no-unused-vars": "error",
         "camelcase": "error",
+        "[eslint] Expected linebreaks to be 'LF' but found 'CRLF'. (linebreak-style)": 0,
+        "String does not match the pattern of '^(?:@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$'": 0,
         "indent": [
             "error",
             2
