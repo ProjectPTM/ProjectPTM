@@ -14,11 +14,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+
 // Handlebars
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers:{
+        displayComment: function(comments) {
+        var t = comments.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        return t;
+      }
+    }
   })
 );
 app.set("view engine", "handlebars");

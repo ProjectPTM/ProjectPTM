@@ -17,13 +17,16 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  // savePic: function(picUrl, id) {
-  //   return $.ajax({
-  //     method: "PUT",
-  //     url: "api/toys/" + id,
-  //     data: picUrl
-  //   });
-  // },
+  saveComment: function(id, thisComment) {
+    var setComment = {
+      comments: thisComment
+      };
+    return $.ajax({
+      type: "PUT",
+      url: "api/toys/" + id,
+      data: setComment
+    });
+  },
   getExamples: function() {
     return $.ajax({
       url: "api/toys",
@@ -102,9 +105,20 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+$(document).on("click", "#comment-submit", function(event) {
+  event.preventDefault();
+  var comment = $("#toy-comment").val().trim();
+  var id = $("#comment-submit").val();
+ 
+  API.saveComment(id, comment).then(function() {
+    console.log("This might work someday");
+  });
+});
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+// $("#comment-submit").on("click", submitComment);
 
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
     cloudinary.openUploadWidget({ cloud_name: 'dbs2wbyop', upload_preset: 'qhyp62og', folder: 'user_photos'}, 

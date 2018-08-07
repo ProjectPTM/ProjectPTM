@@ -8,20 +8,20 @@ module.exports = function(app) {
     });
   });
 
-  // app.put("/api/toys/:id", function(req, res) {
-  //   db.Toy.findAll.update({
-  //     photoPath: req.body.photoPath
-  //   }, {
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbBurger) {
-  //     res.json(dbBurger);
-  //   })
-  //     .catch(function(err) {
-  //       res.json(err);
-  //     });
-  // });
+  app.put("/api/toys/:id", function(req, res) {
+    db.Toy.update({
+      comments: req.body.comments
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
+    })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
 
   app.post("/api/toys", function(req, res) {
     db.Toy.create(req.body).then(function(dbExample) {
