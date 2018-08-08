@@ -6,7 +6,7 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/toys",
+      url: "../api/toys",
       data: JSON.stringify(example)
     });
   },
@@ -22,13 +22,13 @@ var API = {
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/toys",
+      url: "../api/toys",
       type: "GET"
     });
   },
   deleteExample: function(id) {
     return $.ajax({
-      url: "api/toys/" + id,
+      url: "../api/toys/" + id,
       type: "DELETE"
     });
   }
