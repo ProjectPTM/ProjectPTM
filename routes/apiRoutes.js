@@ -8,6 +8,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/general", function(req, res) {
+    de.General.findAll({}).then(function(dbGenerals) {
+      res.json(dbGenerals);
+    });
+  });
+
   app.put("/api/toys/:id", function(req, res) {
     db.Toy.update({
       comments: req.body.comments
@@ -26,6 +32,12 @@ module.exports = function(app) {
   app.post("/api/toys", function(req, res) {
     db.Toy.create(req.body).then(function(dbExample) {
       res.json(dbExample);
+    });
+  });
+
+  app.post("/api/general", function(req, res) {
+    db.General.create(req.body).then(function(dbGeneral) {
+      res.json(dbGeneral);
     });
   });
 

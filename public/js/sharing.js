@@ -3,6 +3,7 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var userComment = $("#general-comment");
 var picPath;
 
 // The API object contains methods for each kind of request we'll make
@@ -17,19 +18,25 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  saveComment: function(id, thisComment) {
-    var setComment = {
-      comments: thisComment
-      };
+  saveGeneral: function(comment) {
     return $.ajax({
-      type: "PUT",
-      url: "/api/toys/" + id,
-      data: setComment
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "/api/general",
+      data: JSON.stringify(comment)
+    });
+  },
+  grabUser: function() {
+    return $.ajax({
+      url: "/api/user_data",
+      type: "GET"
     });
   },
   getExamples: function() {
     return $.ajax({
-      url: "../api/toys",
+      url: "/api/toys",
       type: "GET"
     });
   },
@@ -105,20 +112,30 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-$(document).on("click", "#comment-submit", function(event) {
+$(document).on("click", "#comment-submit", function(event) {  
   event.preventDefault();
-  var comment = $("#toy-comment").val().trim();
-  var id = $("#comment-submit").val();
- 
-  API.saveComment(id, comment).then(function() {
-    console.log("This might work someday");
+  var thisUser;
+  API.grabUser().then(function(data) {
+    thisUser = data.email;
+    if (thisUser == undefined) {
+      console.log("You must be a user to comment")
+    }
+    else {
+      var comment = {
+        text: userComment.val().trim(),
+        commentUser: thisUser
+      }
+      API.saveGeneral(comment).then(function() {
+        refreshExamples();
+        $("#general-comment").val("");
+      });
+    }
   });
 });
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-// $("#comment-submit").on("click", submitComment);
 
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
     cloudinary.openUploadWidget({ cloud_name: 'dbs2wbyop', upload_preset: 'qhyp62og', folder: 'user_photos'}, 

@@ -7,14 +7,10 @@ var picPath;
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  grabUser: function() {
     return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/toys",
-      data: JSON.stringify(example)
+      url: "/api/user_data",
+      type: "GET"
     });
   },
   saveComment: function(id, thisComment) {
@@ -41,34 +37,12 @@ var API = {
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(toy) {
-      var $a = $("<a>")
-        .text(toy.text)
-        .attr("href", "/toys/" + toy.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": toy.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
+API.grabUser().then(function(data) {
+  var thisUser = data.email;
+  if (thisUser !== undefined) {
+    $("#user-name").append(thisUser);
+  }
+});
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
@@ -111,7 +85,7 @@ $(document).on("click", "#comment-submit", function(event) {
   var id = $("#comment-submit").val();
  
   API.saveComment(id, comment).then(function() {
-    console.log("This might work someday");
+    console.log("comment saved");
   });
 });
 
