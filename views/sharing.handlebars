@@ -15,7 +15,7 @@
           </div>
           <div class="form-group">
             <label for="example-description">Description (How old is it? How did you acquire it? Etc.)</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Toy Description"></textarea>
           </div>
           <br>
             <button id="submit" class="btn btn-primary float-right">Submit</button>
@@ -27,8 +27,20 @@
         <div class="card mt-4">
           <div class="card-body">
             <h5 class="card-title">Latest Toy News from Users</h5>
-            <div id="toyPic">
-              <p>User comments about new toys, auctions, etc.</p>
+            <div id="general-comments">
+              {{!-- {{#*inline "myPartial"}}
+                    return $.ajax({
+                      url: "/api/user_data",
+                       type: "GET"
+                      });
+              {{/inline}} --}}
+              <form class="clearfix mb-4" action="POST">
+                <div class="form-group">
+                  <label for="general-comment">Do you have any new toy news?</label>
+                    <textarea class="form-control" id="general-comment" aria-describedby="general-comment" rows="5" placeholder="User Toy News"></textarea>
+                </div>
+                <button id="comment-submit" class="btn btn-primary float-right">Submit</button>
+              </form>
             </div>
           </div>
         </div>

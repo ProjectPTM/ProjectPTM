@@ -1,15 +1,4 @@
-
 var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "../api/toys",
-      data: JSON.stringify(example)
-    });
-  },
   saveComment: function(id, thisComment) {
     var setComment = {
       comments: thisComment
@@ -20,16 +9,10 @@ var API = {
       data: setComment
     });
   },
-  getExamples: function() {
+  grabUser: function() {
     return $.ajax({
-      url: "../api/toys",
+      url: "../api/user_data",
       type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "../api/toys/" + id,
-      type: "DELETE"
     });
   }
 };
@@ -38,17 +21,29 @@ var API = {
         var previous = $("#these-comments").text();
         var id = $("#comment-submit").val();
         var comment;
-        var newDiv = $("<p>")
-        if (previous == "") {
-          comment = $("#toy-comment").val().trim();
-        }
-        else {
-          comment = previous + "\n" + $("#toy-comment").val().trim();
-        }
-      
-        API.saveComment(id, comment).then(function() {
-          $("#toy-comment").val("");
-          location.reload();
+        var thisUser;
+        API.grabUser().then(function(data) {
+          thisUser = data.email;
+          if (thisUser == undefined) {
+            if (previous== "") {
+              comment = $("#toy-comment").val().trim();
+            }
+            else {
+              comment = previous + "\n" + $("#toy-comment").val().trim();
+            }
+          }      
+          else {
+            if (previous == "") {
+              comment = $("#toy-comment").val().trim() + " by " + thisUser;
+            }
+            else {
+              comment = previous + "\n" + $("#toy-comment").val().trim() + " by " + thisUser;
+            }
+          }        
+          API.saveComment(id, comment).then(function() {
+            $("#toy-comment").val("");
+            location.reload();
+          });
         });
       });
 
