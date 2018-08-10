@@ -3,14 +3,25 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/toys", function(req, res) {
+    db.Toy.findAll({
+      limit: 5,
+      order: [['id', 'DESC']]
+    }).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
+  });
+
+  app.get("/api/toys/sort", function(req, res) {
     db.Toy.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
   app.get("/api/general", function(req, res) {
-    de.General.findAll({}).then(function(dbGenerals) {
-      res.json(dbGenerals);
+    db.General.findAll({}).then(function(dbGenerals) {
+      res.render("sharing", {
+        general: dbGenerals
+      });
     });
   });
 
@@ -41,7 +52,6 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
   app.delete("/api/toys/:id", function(req, res) {
     db.Toy.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);

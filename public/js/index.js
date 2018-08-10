@@ -92,11 +92,3 @@ $(document).on("click", "#comment-submit", function(event) {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-// $("#comment-submit").on("click", submitComment);
-
-  document.getElementById("upload_widget_opener").addEventListener("click", function() {
-    cloudinary.openUploadWidget({ cloud_name: 'dbs2wbyop', upload_preset: 'qhyp62og', folder: 'user_photos'}, 
-    function(error, result) { 
-        picPath = result[0].url;
-        console.log(error, result) });
-  }, false);
