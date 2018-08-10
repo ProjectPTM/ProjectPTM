@@ -20,46 +20,43 @@
           <br>
             <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
+        <h3>Recent Toy List:</h3>
+          <ul id="example-list" class="list-group">
+            {{#each data.toys}}
+            <li data-id="{{this.id}}" class="list-group-item">
+              <a href="toys/{{this.id}}">{{this.text}}</a>
+              <button class="btn btn-danger float-right delete">ｘ</button>
+            </li>
+            {{/each}}
+          </ul>
       </div>
       <div class="col-4">
         <a href="/" style="float:right">Home/Niche Toys</a>
         <br>
         <div class="card mt-4">
           <div class="card-body">
-            <h5 class="card-title">Latest Toy News from Users</h5>
+            <h5 class="card-title">Toy News from Users</h5>
             <div id="general-comments">
-              {{!-- {{#*inline "myPartial"}}
-                    return $.ajax({
-                      url: "/api/user_data",
-                       type: "GET"
-                      });
-              {{/inline}} --}}
-              <form class="clearfix mb-4" action="POST">
-                <div class="form-group">
+                <form class="clearfix mb-4" action="POST">
+                  <div class="form-group">
                   <label for="general-comment">Do you have any new toy news?</label>
                     <textarea class="form-control" id="general-comment" aria-describedby="general-comment" rows="5" placeholder="User Toy News"></textarea>
-                </div>
-                <button id="comment-submit" class="btn btn-primary float-right">Submit</button>
-              </form>
+                  </div>
+                  <button id="comment-submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+                <h5 class="previous-comments">Latest Toy News from Users</h5>
+                  {{> general/genpartial }}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <h3>Recent Toy List:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each toys}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="toys/{{this.id}}">{{this.text}}</a>
-            {{!-- <img src={{this.photoPath}} class="img-fluid" alt={{this.text}}> --}}
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <h4 id="remind"></h4>
+            <img src="/images/alertmessage.jpg" alt="Reminder">
       </div>
-      </div>
+    </div>
   </div>
 </div>
 

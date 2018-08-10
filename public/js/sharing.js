@@ -112,13 +112,21 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+function userAlert() {
+  var modal = $('#myModal');
+  $("#remind").text("You must log in to comment here.")
+  modal.css("display", "block");
+  setTimeout(function(){ modal.css("display", "none"); }, 2500);
+  $("#general-comment").val("");
+}
+
 $(document).on("click", "#comment-submit", function(event) {  
   event.preventDefault();
   var thisUser;
   API.grabUser().then(function(data) {
     thisUser = data.email;
     if (thisUser == undefined) {
-      console.log("You must be a user to comment")
+      userAlert();
     }
     else {
       var comment = {
@@ -128,6 +136,7 @@ $(document).on("click", "#comment-submit", function(event) {
       API.saveGeneral(comment).then(function() {
         refreshExamples();
         $("#general-comment").val("");
+        location.reload();
       });
     }
   });
