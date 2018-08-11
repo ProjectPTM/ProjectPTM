@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 var request;
 
-describe("GET /api/toys", function() {
+describe("GET /api/general", function() {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
   beforeEach(function() {
@@ -19,12 +19,12 @@ describe("GET /api/toys", function() {
 
   it("should find all examples", function(done) {
     // Add some examples to the db to test with
-    db.Toy.bulkCreate([
-      { text: "I love legos", photoPath: "joel@gmail.com", description: "Hello", comments: "never too many toys" },
-      { text: "I love legos123", photoPath: "joel@gmail.com123", description: "Hello123", comments: "never too many toys123" }
+    db.General.bulkCreate([
+      { text: "I love toys", commentUser: "Awesome toys" },
+      { text: "I always love toys", commentUser: "Awesome toys123" }
     ]).then(function() {
       // Request the route that returns all examples
-      request.get("/api/toys").end(function(err, res) {
+      request.get("/api/general").end(function(err, res) {
         var responseStatus = res.status;
         var responseBody = res.body;
 
@@ -40,11 +40,11 @@ describe("GET /api/toys", function() {
 
         expect(responseBody[0])
           .to.be.an("object")
-          .that.includes({ text: "I love legos", photoPath: "joel@gmail.com", description: "Hello", comments: "never too many toys" });
+          .that.includes({ text: "I love toys", commentUser: "Awesome toys" });
 
         expect(responseBody[1])
           .to.be.an("object")
-          .that.includes({ text: "I love legos123", photoPath: "joel@gmail.com123", description: "Hello123", comments: "never too many toys123" });
+          .that.includes({ text: "I always love toys", commentUser: "Awesome toys123" });
 
         // The `done` function is used to end any asynchronous tests
         done();
