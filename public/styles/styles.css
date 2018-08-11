@@ -48,6 +48,26 @@ tr:nth-child(odd) {
   width: 35%; 
 }
 
-body {
+.container {
+  margin-top: 2%;
+}
+
+button {
+  background-color: #eee;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+a {
+  color: black;
+}
+#comment-submit {
+  background-color:rgb(110, 206, 144);
+}
+
+.list-group-item {
+  background-color:#d8e7e1;
+}
+/* body {
   background-image: url("/images/starwarsimage.png");
 }

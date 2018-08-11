@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="background-color:hsl(141, 84%, 83%); background-size: 100% auto;">
   <div class="row">
     <div class="col-6">
-      <div class="card mt-4">
+      <div class="card mt-4" style="background-color:#d8e7e1;">
         <div class="card-body">
           <h5 class="card-title">{{toy.text}}</h5>
             <div id="toyPic">
@@ -13,14 +13,14 @@
       </div>
     </div>
     <div class="col-6">
-      <div class="card mt-4">
+      <div class="card mt-4" style="background-color:#d8e7e1;">
         <div class="card-body">
           <form class="clearfix mb-4">
           <div class="form-group">
           <label for="toy-comment">Add a comment about this toy.</label>
             <textarea class="form-control" id="toy-comment" placeholder="Enter your comment"></textarea>
           </div>
-            <button id="comment-submit" class="btn btn-primary float-right" value={{toy.id}}>Submit</button>
+            <button id="comment-submit" class="btn float-right" value={{toy.id}}>Submit</button>
           </form>
           <h4>Previous Comments</h4>
           <h6><div id="these-comments">{{{displayComment toy.comments}}}</div></h6>
@@ -28,9 +28,10 @@
       </div>
     </div>
   </div>
-    <div class="row" style="text-align:center">
-        <div class="col-2"><a href="/toys">← Back To Sharing</a></div>
-        <div class="col-2"><a href="/search">← Back To Toy Search</a></div>
+    <div class="row" style="text-align:center; padding-top:2%; padding-bottom:1%">
+        <div class="col-1"><button><a href="/">Home</a></button></div>
+        <div class="col-1"><button><a href="/toys">Sharing</a></button></div>
+        <div class="col-1"><button><a href="/search">Search</a></button></div>
     </div>
 </div>
 <script src="/js/toys.js"></script>

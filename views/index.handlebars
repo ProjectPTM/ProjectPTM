@@ -1,31 +1,37 @@
-<div id="home">
+<div id="home" style="margin-top: 0%; background-image: url(&quot;/images/starwarsbackground.png&quot;); background-size: 100%;">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-">
+      <div class="col-6">
         <h1 id="user-name">{{msg}} </h1>
         <h2>Toy Niche</h2>
-        <h3>What do you want to do today?</h3>
-        <a href="/toys">Share a toy</a>
-        <br>
-        <a href="/search">Search toys</a>
-        <br>
-        <a href="/signup">Sign up!</a>
-        <br>
-        <a href="/login">Sign in!</a>
-        <br>
-        <a href="/members">Logout</a>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h4 class="card-title">What do you want to do today?</h4>
+                <button><a href="/toys">Share a toy</a></button>
+                <br>
+                <br>
+                <button><a href="/search">Search toys</a></button>
+                <br>
+                <br>
+                <button><a href="/signup">Sign up!</a></button>
+                <br>
+                <br>
+                <button><a href="/login">Sign in!</a></button>
+                <br>
+                <br>
+                <button><a href="/members">Logout</a></button>
+              </div>
+            </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-8"></div>
-      <div class="col-4">
-        <div class="feedgrabbr_widget" id="fgid_04b18262724493d4c685f762b"></div>
-          <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_04b18262724493d4c685f762b");</script>
-          <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+        <div class="col-6">
+          <div class="feedgrabbr_widget" id="fgid_04b18262724493d4c685f762b"></div>
+            <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_04b18262724493d4c685f762b");</script>
+            <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 
 <script src="/js/index.js"></script>
  
