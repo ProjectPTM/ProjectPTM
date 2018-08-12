@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  
   app.get("/api/toys", function(req, res) {
     db.Toy.findAll({
       limit: 5,
