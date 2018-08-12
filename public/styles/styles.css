@@ -1,5 +1,5 @@
 .list-group-item {
-  line-height: 2.5;
+  line-height: 1.5;
 }
 
 .img-fluid {
@@ -68,6 +68,13 @@ a {
 .list-group-item {
   background-color:#d8e7e1;
 }
-/* body {
-  background-image: url("/images/starwarsimage.png");
+
+h1 {
+  background-color: #d8e7e1;
+}
+
+#user-name {
+  max-width: 80%;
+  padding:2%; 
+  background-color: #d8e7e1;
 }

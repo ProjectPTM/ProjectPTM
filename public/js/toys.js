@@ -1,3 +1,4 @@
+//Displays individual toys from the database and allows clients to comment about them
 var API = {
   saveComment: function(id, thisComment) {
     var setComment = {
