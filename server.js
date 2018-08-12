@@ -25,7 +25,7 @@ app.use(passport.session());
 // Requiring our routes
 require("./login/routes/html-routes.js")(app);
 require("./login/routes/api-routes.js")(app);
-// Handlebars
+// Handlebars with a helper
 app.engine(
   "handlebars",
   exphbs({
@@ -51,7 +51,6 @@ require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
 
-// If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;

@@ -1,3 +1,4 @@
+//Uses Handlebars to make a table of all the toys in the database
 var source = $("#database-template").html(); 
 var template = Handlebars.compile(source); 
 

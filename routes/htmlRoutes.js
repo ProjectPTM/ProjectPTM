@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load main page
   app.get("/", function(req, res) {
     db.Toy.findAll({}).then(function(dbToy) {
       res.render("index", {
@@ -11,6 +11,7 @@ module.exports = function(app) {
     });
   });
 
+  //Toy database and search page
   app.get("/search", function(req, res) {
     db.Toy.findAll({
       order: [
@@ -23,7 +24,7 @@ module.exports = function(app) {
     });
   });
 
-  // Load example page and pass in an example by id
+  // Load toy page and pass in a toy by id
   app.get("/toys", function(req, res) {
    
    var data = { }
@@ -47,7 +48,6 @@ module.exports = function(app) {
     
   });
 
-  // Load example page and pass in an example by id
   app.get("/toys/:id", function(req, res) {
     db.Toy.findOne({ where: { id: req.params.id } }).then(function(dbToy) {
       res.render("toys", {
