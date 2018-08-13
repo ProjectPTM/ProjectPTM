@@ -2,27 +2,22 @@
 <b>TOY NICHE</b>
 </br>
 <p>Project #2</p>
-<br/><br/>
+<br/>
 <p><b>Requirements to complete the project:</b></p><br/>
 <p>
 ** Must use a Node and Express Web Server
-
 Sequelize is used to create and work with the database. Middleware includes BodyParser.  Passport NPM is used for user authentication.
 <br/>
 ** Must be backed by a MySQL Database with a Sequelize ORM  
-
 Models (ORM) for Toy, General (News/Commenting), and User
 <br/>
 ** Must have both GET and POST routes for retrieving and adding new data
-
 Toy Niche uses all parts of the CRUD model: Create--Toy, comment, and user tables; Read-Select toys, comments, and current user and displays the respective table data; Update-Toy comments section can be added to and updated; Delete-Toys in the recent toy list may be deleted.
 <br/>
 ** Must be deployed using Heroku (with Data)
-
 Toy Niche is deployed at https://vast-atoll-87710.herokuapp.com/
 <br/>
 ** Must utilize at least one new library, package, or technology that we haven’t discussed
-
 Several new features include: User login, Cloudinary for image handling, test.js files, dropdown menu, Handlebars table templating, Handlebars partials and helpers, and use of a Feedgrabbr widget and a Google custom search engine.
 <br/>
 ** Must have a polished frontend / UI
@@ -32,7 +27,6 @@ Several new features include: User login, Cloudinary for image handling, test.js
 ** Must meet good quality coding standards (indentation, scoping, naming)
 <br/>
 ** Must protect API keys in node with environment variables
-
 We used widgets and did not need API keys.
 <br/>
 </p>
